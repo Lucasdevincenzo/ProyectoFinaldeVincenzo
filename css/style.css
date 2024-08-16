@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Kaisei Tokumin", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+body.oscuro {
+    background-color: #121212;
+    color: #dad4d4;
+}
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+}
+div {
+    margin-bottom: 10px;
+}
+label {
+    display: inline-block;
+    width: 200px;
+}
+input, select {
+    width: 200px;
+}
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+h2 {
+    margin-top: 20px;
+}
