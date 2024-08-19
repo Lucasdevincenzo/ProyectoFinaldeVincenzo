@@ -1,3 +1,4 @@
+// Funcion para cargar los horarios de la película seleccionada
 function cargarHorarios() {
     let peliculaSeleccionada = parseInt(document.getElementById('pelicula').value);
     let horariosSelect = document.getElementById('horario');
@@ -16,7 +17,7 @@ function cargarHorarios() {
 
 document.getElementById('pelicula').addEventListener('change', cargarHorarios);
 
-
+// Funcion para capturar las entradas del usuario
 function capturarEntradas() {
     let peliculaSeleccionada = parseInt(document.getElementById('pelicula').value);
     let horarioSeleccionado = document.getElementById('horario').value;
@@ -31,12 +32,12 @@ function capturarEntradas() {
     return { peliculaSeleccionada, horarioSeleccionado, cantidadAdultos, cantidadNiños };
 }
 
-
+// Funcion para calcular el total a pagar
 function calcularTotal(cantidades, precios) {
     return (cantidades.cantidadAdultos * precios.adulto) + (cantidades.cantidadNiños * precios.niño);
 }
 
-
+// Funcion para mostrar el resumen de la compra y guardar la información en local storage
 function mostrarResultado(datos, total) {
     let resumenDiv = document.getElementById('resumen');
     resumenDiv.innerHTML = `
@@ -56,3 +57,36 @@ function mostrarResultado(datos, total) {
         total: total.toFixed(2)
     }));
 }
+// API Y URL
+const API_KEY = 'e918a640cf3b2a04ddc24c6e3bbb708a';
+const BASE_URL = 'https://api.themoviedb.org/3';
+// Event listener para ver los trailers de las peliculas
+document.querySelectorAll('.ver-trailer').forEach(button => {
+    button.addEventListener('click', async () => {
+        const movieId = button.getAttribute('data-movie-id');
+        const url = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-EN`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const trailer = data.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+            
+            if (trailer) {
+                const trailerIframe = document.getElementById('trailerIframe');
+                trailerIframe.src = `https://www.youtube.com/embed/${trailer.key}`;
+                
+                const trailerModal = new bootstrap.Modal(document.getElementById('trailerModal'));
+                trailerModal.show();
+            } else {
+                alert('Trailer no disponible.');
+            }
+        } catch (error) {
+            console.error('Error al obtener el trailer:', error);
+        }
+    });
+});
+
+// Limpiador para que el trailer no se reproduzca en segundo plano 
+document.getElementById('trailerModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('trailerIframe').src = '';
+});

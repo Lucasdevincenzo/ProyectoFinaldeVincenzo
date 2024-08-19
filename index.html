@@ -9,7 +9,41 @@
     <title>Compra de Entradas de Cine</title>
 </head>
 <body class="oscuro">
+
+    <!--Carrusel para las imagenes de las peliculas-->
     <div class="container">
+        <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://image.tmdb.org/t/p/w780/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg" class="d-block w-100" alt="Avengers: Endgame">
+                    <div class="carousel-caption d-none d-md-block">
+                        <button class="btn btn-primary ver-trailer" data-movie-id="299534">Ver Trailer</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://image.tmdb.org/t/p/w780/w9kR8qbmQ01HwnvK4alvnQ2ca0L.jpg" class="d-block w-100" alt="Toy Story 4">
+                    <div class="carousel-caption d-none d-md-block">
+                        <button class="btn btn-primary ver-trailer" data-movie-id="301528">Ver Trailer</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://image.tmdb.org/t/p/w780/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" class="d-block w-100" alt="Joker">
+                    <div class="carousel-caption d-none d-md-block">
+                        <button class="btn btn-primary ver-trailer" data-movie-id="475557">Ver Trailer</button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!--Sistema  de compra de las entradas de cine-->
         <h1>Sistema de Compra de Entradas de Cine</h1>
         <div>
             <label for="pelicula">Seleccione la película:</label>
@@ -37,6 +71,22 @@
         <div id="resumen">
         </div>
     </div>
+    <!--Modal para ver los trailers-->
+<div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="trailerModalLabel">Trailer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                    <iframe id="trailerIframe" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="js/productos.js"></script>
     <script src="js/sistema.js"></script>
     <script src="js/main.js"></script>

@@ -1,3 +1,4 @@
+// Funcion para simular la compra de entradas
 function simuladorCompra() {
     let datos = capturarEntradas();
     
@@ -12,7 +13,7 @@ function simuladorCompra() {
 
 document.getElementById('comprar').addEventListener('click', simuladorCompra);
 
-
+// Local storage de la ultima compra
 document.addEventListener('DOMContentLoaded', (event) => {
     cargarHorarios();
     
@@ -30,4 +31,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
         `;
     }
 });
-
